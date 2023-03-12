@@ -25,22 +25,22 @@ data prepare: ImageNet with the following folder structure, you can extract Imag
 
 
 
-### 2. PoolFormer Models
+### 2. PoolAttnFormer Models (In paper we denote as POTTER_cls)
 
 | Model    |  #Params | Image resolution | #MACs* | Top1 Acc| Download | Log |
 | :---     |   :---:    |  :---: |  :---: |  :---:  |  :---:  | :---:  |
-| poolformer_s12  |    12M     |   224  |  1.8G |  79.0  | [here]() |[log]() |
-| poolformer_s24 |   21M     |   224 | 3.4G | 80.3  | [here]() |  |[log]() |
+| poolattnformer_s12  |    12M     |   224  |  1.8G |  79.0  | [here]() |[log]() |
+| poolattnformer_s24 |   21M     |   224 | 3.4G | 80.3  | [here]()  |[log]() |
 
 
 
 
 ### 3. Validation
 
-To evaluate our PoolFormer models, run:
+To evaluate our PoolAttnFormer models, run:
 
 ```bash
-MODEL=poolformer_s12 # poolformer_{s12, s24, s36, m36, m48}
+MODEL=poolattnformer_s12 # poolattnformer_{s12, s24, s36, m36, m48}
 python3 validate.py /path/to/imagenet  --model $MODEL -b 128 \
   --pretrained # or --checkpoint /path/to/checkpoint 
 ```
@@ -48,12 +48,12 @@ python3 validate.py /path/to/imagenet  --model $MODEL -b 128 \
 
 
 ### 4. Train
-We show how to train PoolFormers on 8 GPUs. The relation between learning rate and batch size is lr=bs/1024*1e-3.
-For convenience, assuming the batch size is 1024, then the learning rate is set as 1e-3 (for batch size of 1024, setting the learning rate as 2e-3 sometimes sees better performance). 
+We show how to train PoolAttnFormers on 8 GPUs. The relation between learning rate and batch size is lr=bs/1024*2e-3.
+For convenience, assuming the batch size is 1024, then the learning rate is set as 2e-3 
 
 
 ```bash
-MODEL=poolformer_s12 # poolformer_{s12, s24, s36, m36, m48}
+MODEL=poolattnformer_s12 # poolattnformer_{s12, s24, s36, m36, m48}
 DROP_PATH=0.1 # drop path rates [0.1, 0.1, 0.2, 0.3, 0.4] responding to model [s12, s24, s36, m36, m48]
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./distributed_train.sh 8 /path/to/imagenet \
   --model $MODEL -b 128 --lr 1e-3 --drop-path $DROP_PATH --apex-amp
@@ -63,6 +63,6 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./distributed_train.sh 8 /path/to/imagenet 
 ## Acknowledgment
 Our implementation is mainly based on the following codebases. We gratefully thank the authors for their wonderful works.
 
-[pytorch-image-models](https://github.com/rwightman/pytorch-image-models), [mmdetection](https://github.com/open-mmlab/mmdetection), [mmsegmentation](https://github.com/open-mmlab/mmsegmentation).
+[PoolFormer](https://github.com/sail-sg/poolformer), [pytorch-image-models](https://github.com/rwightman/pytorch-image-models), [mmdetection](https://github.com/open-mmlab/mmdetection), [mmsegmentation](https://github.com/open-mmlab/mmsegmentation).
 
 
