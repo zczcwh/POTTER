@@ -29,8 +29,8 @@ data prepare: ImageNet with the following folder structure, you can extract Imag
 
 | Model    |  #Params | Image resolution | #MACs* | Top1 Acc| Download | Log |
 | :---     |   :---:    |  :---: |  :---: |  :---:  |  :---:  | :---:  |
-| poolattnformer_s12  |    12M     |   224  |  1.8G |  79.0  | [here]() |[log]() |
-| poolattnformer_s24 |   21M     |   224 | 3.4G | 81.4  | [here]()  |[log]() |
+| poolattnformer_s12  |    12M     |   224  |  1.8G |  79.0  | [here](https://drive.google.com/file/d/14d8ky1d_oKXrZEqb3sM_atfpQM5Q6Ob0/view?usp=share_link) |[log](https://drive.google.com/file/d/1hyZSEluxKAJvK4aaaOq9hbDnuTmnI7ED/view?usp=share_link) |
+| poolattnformer_s24 |   21M     |   224 | 3.4G | 81.4  | [here](https://drive.google.com/file/d/1M2Jy7kV-HAY-lr_MGOdEwIKsCgmNZQSZ/view?usp=share_link)  |[log](https://drive.google.com/file/d/1aK5p5kxPLQK_oQiPWgoRfG48HzTUHeRe/view?usp=share_link) |
 
 
 
