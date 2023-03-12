@@ -1,4 +1,4 @@
-# Image Classification Part (Section 4.1)
+# Image Classification Part (Section 4.1 in our paper)
 
 ## Image Classification
 ### 1. Requirements
