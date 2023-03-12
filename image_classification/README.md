@@ -30,7 +30,7 @@ data prepare: ImageNet with the following folder structure, you can extract Imag
 | Model    |  #Params | Image resolution | #MACs* | Top1 Acc| Download | Log |
 | :---     |   :---:    |  :---: |  :---: |  :---:  |  :---:  | :---:  |
 | poolattnformer_s12  |    12M     |   224  |  1.8G |  79.0  | [here]() |[log]() |
-| poolattnformer_s24 |   21M     |   224 | 3.4G | 80.3  | [here]()  |[log]() |
+| poolattnformer_s24 |   21M     |   224 | 3.4G | 81.4  | [here]()  |[log]() |
 
 
 
