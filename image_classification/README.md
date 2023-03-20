@@ -56,7 +56,7 @@ For convenience, assuming the batch size is 1024, then the learning rate is set 
 MODEL=poolattnformer_s12 # poolattnformer_{s12, s24, s36, m36, m48}
 DROP_PATH=0.1 # drop path rates [0.1, 0.1, 0.2, 0.3, 0.4] responding to model [s12, s24, s36, m36, m48]
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./distributed_train.sh 8 /path/to/imagenet \
-  --model $MODEL -b 128 --lr 1e-3 --drop-path $DROP_PATH --apex-amp
+  --model $MODEL -b 128 --lr 2e-3 --drop-path $DROP_PATH --apex-amp
 ```
 
 
