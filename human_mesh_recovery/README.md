@@ -14,8 +14,8 @@
 
 
 ## TODO
-- [] Provide pretrained model 
-- [] Provide training and testing code
+- Provide pretrained model 
+- Provide training and testing code
 
 ## Installation instructions
 
