@@ -1,0 +1,937 @@
+(hymeshnew) cezheng@lambda-quad:/data/mesh/hybrik/heater$ ./scripts/train_smpl_cam.sh train_res34 ./configs/poolattnhr_cam_w_pw3d.yaml
+Added key: store_based_barrier_key:1 to store for rank: 3
+Added key: store_based_barrier_key:1 to store for rank: 2
+Added key: store_based_barrier_key:1 to store for rank: 1
+Added key: store_based_barrier_key:1 to store for rank: 0
+Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.
+tcp://127.0.1.1:23456, ws:4, rank:0
+******************************
+Namespace(cfg='./configs/poolattnhr_cam_w_pw3d.yaml', exp_id='train_res34', nThreads=8, snapshot=2, rank=0, dist_url='tcp://127.0.1.1:23456', dist_backend='nccl', launcher='pytorch', sync=False, seed=123123, dynamic_lr=False, exp_lr=False, board=True, debug=False, params=False, map=True, flip_test=True, flip_shift=False, world_size=4, work_dir='./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/', ngpus_per_node=4, gpu=0, log=True)
+******************************
+{'DATASET': {'DATASET': 'mix2_smpl_cam', 'SET_LIST': [{'ROOT': '/data/mesh/hybrik/hybrik_2022/data/h36m/', 'TEST_SET': 'Sample_20_test_Human36M_smpl', 'TRAIN_SET': 'Sample_trainmin_train_Human36M_smpl_leaf_twist'}, {'ROOT': '/data/mesh/hybrik/hybrik_2022/data/coco/', 'TRAIN_SET': 'train2017'}, {'ROOT': '/data/mesh/hybrik/hybrik_2022/data/3dhp/', 'TRAIN_SET': 'train_v2'}, {'ROOT': '/data/mesh/hybrik/hybrik_2022/data/pw3d/'}], 'PARTITION': [0.3, 0.4, 0.1, 0.2], 'PROTOCOL': 2, 'FLIP': True, 'ROT_FACTOR': 30, 'SCALE_FACTOR': 0.3, 'NUM_JOINTS_HALF_BODY': 8, 'PROB_HALF_BODY': -1, 'COLOR_FACTOR': 0.2, 'OCCLUSION': True}, 'MODEL': {'TYPE': 'PoolAttnHRCam', 'PRETRAINED': '', 'TRY_LOAD': '', 'FOCAL_LENGTH': 1000, 'IMAGE_SIZE': [256, 256], 'HEATMAP_SIZE': [64, 64], 'NUM_JOINTS': 29, 'NUM_DECONV_FILTERS': [256, 256, 256], 'NUM_LAYERS': 34, 'EXTRA': {'SIGMA': 2, 'CROP': 'padding', 'AUGMENT': 'none', 'PRESET': 'simple_smpl_3d_cam', 'DEPTH_DIM': 64, 'LAYERS': [2, 2, 6, 2], 'EMBED_DIMS': [64, 128, 320, 512], 'MLP_RATIOS': [4, 4, 4, 4], 'DROP_RATE': 0.1, 'DROP_PATH_RATE': 0.1, 'PRETRAINED': './model_files/poolattnhr_coco.pth'}, 'POST': {'NORM_TYPE': 'softmax'}, 'BBOX_3D_SHAPE': [2200, 2200, 2200]}, 'LOSS': {'TYPE': 'L1LossDimSMPLCam', 'ELEMENTS': {'BETA_WEIGHT': 1, 'BETA_REG_WEIGHT': 0, 'PHI_REG_WEIGHT': 0.0001, 'LEAF_REG_WEIGHT': 0, 'TWIST_WEIGHT': 0.01, 'THETA_WEIGHT': 0.01, 'UVD24_WEIGHT': 1, 'XYZ24_WEIGHT': 1, 'XYZ_SMPL24_WEIGHT': 0, 'XYZ_SMPL17_WEIGHT': 0, 'VERTICE_WEIGHT': 0, 'RUBOST_TRAIN': True}}, 'TEST': {'HEATMAP2COORD': 'coord'}, 'TRAIN': {'WORLD_SIZE': 4, 'BATCH_SIZE': 28, 'BEGIN_EPOCH': 0, 'END_EPOCH': 200, 'OPTIMIZER': 'adam', 'LR': 0.0002, 'LR_FACTOR': 0.2, 'LR_STEP': [50, 80], 'DPG_MILESTONE': 140, 'DPG_STEP': [20, 50]}, 'FILE_NAME': 'poolattnhr_cam_w_pw3d.yaml'}
+******************************
+Rank 1: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.
+tcp://127.0.1.1:23456, ws:4, rank:1
+Rank 3: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.
+Rank 2: Completed store-based barrier for key:store_based_barrier_key:1 with 4 nodes.
+tcp://127.0.1.1:23456, ws:4, rank:3
+tcp://127.0.1.1:23456, ws:4, rank:2
+load_weight 396
+Create new model
+=> init weights
+loading annotations into memory...
+Done (t=4.64s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=7.29s)
+creating index...
+index created!
+max_data_set 0
+loading annotations into memory...
+Done (t=7.83s)
+creating index...
+index created!
+############# Starting Epoch 0 | LR: 0.0002 #############
+loss: 8.87068844 | accuvd29: 0.0273 | acc17: 0.0000:   0%| | 1/2788 [00:57<44:23Reducer buckets have been rebuilt in this iteration.
+loss: 2.08573284 | accuvd29: 0.5876 | acc17: 0.5428: 100%|█| 2788/2788 [40:29<00
+Train-0 epoch | loss:2.08573284 | acc:0.5428
+############# Starting Epoch 1 | LR: 0.0002 #############
+loss: 1.63982295 | accuvd29: 0.6905 | acc17: 0.7014: 100%|█| 2788/2788 [40:31<00
+Train-1 epoch | loss:1.63982295 | acc:0.7014
+100%|█████████████████████████████████████████| 270/270 [02:47<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 46.776021 | MPJPE: 69.842067, x: 25.724158, y: 32.99, z: 43.661627
+Directions: 61.11 Discussion: 64.15 Eating: 69.77 Greeting: 66.57 Phoning: 72.03 Posing: 56.68 Purchases: 68.83 Sitting: 80.94 SittingDown: 93.31 Smoking: 69.32 Photo: 79.70 Waiting: 64.57 Walking: 61.23 WalkDog: 74.22 WalkTogether: 68.52 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 50.365857 | MPJPE: 81.462789, x: 29.868227, y: 31.87, z: 56.737548
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 1 | h36m err: 46.776021261410385 / 46.776021261410385 | 3dpw err: 50.36585717091401 / 50.36585717091401 #####
+############# Starting Epoch 2 | LR: 0.0002 #############
+loss: 1.53315154 | accuvd29: 0.7190 | acc17: 0.7356: 100%|█| 2788/2788 [40:30<00
+Train-2 epoch | loss:1.53315154 | acc:0.7356
+############# Starting Epoch 3 | LR: 0.0002 #############
+loss: 1.48514074 | accuvd29: 0.7333 | acc17: 0.7585: 100%|█| 2788/2788 [40:30<00
+Train-3 epoch | loss:1.48514074 | acc:0.7585
+100%|█████████████████████████████████████████| 270/270 [02:47<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 42.729187 | MPJPE: 65.822343, x: 24.237386, y: 29.25, z: 42.490004
+Directions: 58.29 Discussion: 58.69 Eating: 67.63 Greeting: 63.09 Phoning: 68.54 Posing: 53.79 Purchases: 63.12 Sitting: 76.29 SittingDown: 87.33 Smoking: 66.48 Photo: 75.83 Waiting: 60.04 Walking: 57.87 WalkDog: 67.94 WalkTogether: 65.10 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 48.713895 | MPJPE: 81.196021, x: 30.177982, y: 30.88, z: 56.775125
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 3 | h36m err: 42.72918692652911 / 42.72918692652911 | 3dpw err: 48.71389456585817 / 48.71389456585817 #####
+############# Starting Epoch 4 | LR: 0.0002 #############
+loss: 1.44205246 | accuvd29: 0.7458 | acc17: 0.7762: 100%|█| 2788/2788 [40:31<00
+Train-4 epoch | loss:1.44205246 | acc:0.7762
+############# Starting Epoch 5 | LR: 0.0002 #############
+loss: 1.41395452 | accuvd29: 0.7522 | acc17: 0.7820: 100%|█| 2788/2788 [40:31<00
+Train-5 epoch | loss:1.41395452 | acc:0.7820
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 41.926069 | MPJPE: 68.025926, x: 24.276816, y: 32.46, z: 42.725513
+Directions: 61.30 Discussion: 61.11 Eating: 70.84 Greeting: 65.69 Phoning: 69.51 Posing: 57.02 Purchases: 64.49 Sitting: 80.23 SittingDown: 86.06 Smoking: 67.24 Photo: 77.86 Waiting: 61.80 Walking: 61.05 WalkDog: 71.09 WalkTogether: 68.04 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 47.940581 | MPJPE: 79.744448, x: 30.153667, y: 30.59, z: 55.230275
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 5 | h36m err: 41.926069372814055 / 41.926069372814055 | 3dpw err: 47.94058050441824 / 47.94058050441824 #####
+############# Starting Epoch 6 | LR: 0.0002 #############
+loss: 1.38108583 | accuvd29: 0.7613 | acc17: 0.7946: 100%|█| 2788/2788 [40:31<00
+Train-6 epoch | loss:1.38108583 | acc:0.7946
+############# Starting Epoch 7 | LR: 0.0002 #############
+loss: 1.35777670 | accuvd29: 0.7667 | acc17: 0.8039: 100%|█| 2788/2788 [40:31<00
+Train-7 epoch | loss:1.35777670 | acc:0.8039
+100%|█████████████████████████████████████████| 270/270 [02:47<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 40.828813 | MPJPE: 62.542781, x: 23.027007, y: 29.91, z: 38.847496
+Directions: 54.53 Discussion: 57.39 Eating: 61.86 Greeting: 59.12 Phoning: 64.37 Posing: 52.77 Purchases: 60.08 Sitting: 72.55 SittingDown: 81.43 Smoking: 62.35 Photo: 71.28 Waiting: 57.52 Walking: 56.52 WalkDog: 66.45 WalkTogether: 62.50 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 48.222133 | MPJPE: 79.861133, x: 30.069045, y: 31.14, z: 54.997693
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 7 | h36m err: 40.82881314675746 / 40.82881314675746 | 3dpw err: 48.22213310779835 / 47.94058050441824 #####
+############# Starting Epoch 8 | LR: 0.0002 #############
+loss: 1.33871547 | accuvd29: 0.7722 | acc17: 0.8144: 100%|█| 2788/2788 [40:31<00
+Train-8 epoch | loss:1.33871547 | acc:0.8144
+############# Starting Epoch 9 | LR: 0.0002 #############
+loss: 1.59535729 | accuvd29: 0.7761 | acc17: 0.8106: 100%|█| 2788/2788 [40:56<00
+Train-9 epoch | loss:1.59535729 | acc:0.8106
+100%|█████████████████████████████████████████| 270/270 [02:50<00:00,  1.58it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 39.434091 | MPJPE: 62.150529, x: 23.250529, y: 29.55, z: 38.533609
+Directions: 56.25 Discussion: 57.06 Eating: 62.70 Greeting: 59.90 Phoning: 64.63 Posing: 53.25 Purchases: 58.01 Sitting: 70.67 SittingDown: 79.24 Smoking: 62.03 Photo: 71.48 Waiting: 57.15 Walking: 53.85 WalkDog: 66.09 WalkTogether: 61.53 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:46<00:00,  1.63it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 47.536963 | MPJPE: 78.771989, x: 29.941075, y: 30.66, z: 54.188904
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 9 | h36m err: 39.43409059990806 / 39.43409059990806 | 3dpw err: 47.53696344277952 / 47.53696344277952 #####
+############# Starting Epoch 10 | LR: 0.0002 #############
+loss: 1.31911905 | accuvd29: 0.7810 | acc17: 0.8159: 100%|█| 2788/2788 [40:33<00
+Train-10 epoch | loss:1.31911905 | acc:0.8159
+############# Starting Epoch 11 | LR: 0.0002 #############
+loss: 1.29195015 | accuvd29: 0.7848 | acc17: 0.8206: 100%|█| 2788/2788 [40:31<00
+Train-11 epoch | loss:1.29195015 | acc:0.8206
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 39.726811 | MPJPE: 60.757924, x: 23.034858, y: 28.25, z: 38.054254
+Directions: 51.71 Discussion: 55.30 Eating: 59.39 Greeting: 56.36 Phoning: 63.32 Posing: 51.02 Purchases: 58.69 Sitting: 70.44 SittingDown: 81.57 Smoking: 60.48 Photo: 69.16 Waiting: 55.26 Walking: 55.37 WalkDog: 66.09 WalkTogether: 60.55 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:42<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 48.311362 | MPJPE: 78.947566, x: 30.405073, y: 31.25, z: 53.185322
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 11 | h36m err: 39.72681095586297 / 39.43409059990806 | 3dpw err: 48.31136220486774 / 47.53696344277952 #####
+############# Starting Epoch 12 | LR: 0.0002 #############
+loss: 1.28385118 | accuvd29: 0.7873 | acc17: 0.8215: 100%|█| 2788/2788 [40:32<00
+Train-12 epoch | loss:1.28385118 | acc:0.8215
+############# Starting Epoch 13 | LR: 0.0002 #############
+loss: 1.26543524 | accuvd29: 0.7901 | acc17: 0.8260: 100%|█| 2788/2788 [40:31<00
+Train-13 epoch | loss:1.26543524 | acc:0.8260
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 39.928090 | MPJPE: 62.412122, x: 23.108429, y: 30.62, z: 38.274078
+Directions: 54.12 Discussion: 59.21 Eating: 60.03 Greeting: 59.02 Phoning: 64.86 Posing: 51.93 Purchases: 62.42 Sitting: 71.10 SittingDown: 84.17 Smoking: 62.11 Photo: 68.76 Waiting: 56.53 Walking: 55.36 WalkDog: 66.74 WalkTogether: 62.05 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 47.438493 | MPJPE: 78.209194, x: 29.775815, y: 30.27, z: 53.696399
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 13 | h36m err: 39.92809034076654 / 39.43409059990806 | 3dpw err: 47.43849332887383 / 47.43849332887383 #####
+############# Starting Epoch 14 | LR: 0.0002 #############
+loss: 1.25203695 | accuvd29: 0.7938 | acc17: 0.8376: 100%|█| 2788/2788 [40:32<00
+Train-14 epoch | loss:1.25203695 | acc:0.8376
+############# Starting Epoch 15 | LR: 0.0002 #############
+loss: 1.25265909 | accuvd29: 0.7946 | acc17: 0.8371: 100%|█| 2788/2788 [40:34<00
+Train-15 epoch | loss:1.25265909 | acc:0.8371
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 38.467037 | MPJPE: 58.880395, x: 22.037737, y: 28.00, z: 36.524852
+Directions: 50.09 Discussion: 54.20 Eating: 57.57 Greeting: 55.43 Phoning: 61.68 Posing: 48.92 Purchases: 56.84 Sitting: 67.23 SittingDown: 79.39 Smoking: 59.09 Photo: 66.09 Waiting: 54.09 Walking: 52.62 WalkDog: 64.03 WalkTogether: 58.28 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 47.585268 | MPJPE: 78.918908, x: 30.076846, y: 30.82, z: 54.125666
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 15 | h36m err: 38.467037476940504 / 38.467037476940504 | 3dpw err: 47.58526841453095 / 47.43849332887383 #####
+############# Starting Epoch 16 | LR: 0.0002 #############
+loss: 1.23853210 | accuvd29: 0.7989 | acc17: 0.8380: 100%|█| 2788/2788 [40:32<00
+Train-16 epoch | loss:1.23853210 | acc:0.8380
+############# Starting Epoch 17 | LR: 0.0002 #############
+loss: 1.23582450 | accuvd29: 0.8018 | acc17: 0.8444: 100%|█| 2788/2788 [40:30<00
+Train-17 epoch | loss:1.23582450 | acc:0.8444
+100%|█████████████████████████████████████████| 270/270 [02:47<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 39.275626 | MPJPE: 60.079906, x: 22.892261, y: 28.12, z: 37.312701
+Directions: 52.52 Discussion: 57.15 Eating: 58.54 Greeting: 57.26 Phoning: 62.61 Posing: 49.41 Purchases: 58.44 Sitting: 69.30 SittingDown: 80.37 Smoking: 59.62 Photo: 65.80 Waiting: 53.93 Walking: 52.16 WalkDog: 65.56 WalkTogether: 59.39 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 47.658159 | MPJPE: 78.935096, x: 30.814045, y: 30.60, z: 53.614566
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 17 | h36m err: 39.27562618502606 / 38.467037476940504 | 3dpw err: 47.6581591445724 / 47.43849332887383 #####
+############# Starting Epoch 18 | LR: 0.0002 #############
+loss: 1.22295081 | accuvd29: 0.8013 | acc17: 0.8473: 100%|█| 2788/2788 [40:32<00
+Train-18 epoch | loss:1.22295081 | acc:0.8473
+############# Starting Epoch 19 | LR: 0.0002 #############
+loss: 1.21067824 | accuvd29: 0.8056 | acc17: 0.8485: 100%|█| 2788/2788 [40:32<00
+Train-19 epoch | loss:1.21067824 | acc:0.8485
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 38.728534 | MPJPE: 61.353928, x: 22.639087, y: 28.52, z: 38.803332
+Directions: 53.43 Discussion: 55.71 Eating: 59.66 Greeting: 59.49 Phoning: 63.08 Posing: 51.67 Purchases: 60.72 Sitting: 67.92 SittingDown: 81.69 Smoking: 60.71 Photo: 70.07 Waiting: 59.98 Walking: 55.75 WalkDog: 64.64 WalkTogether: 61.78 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.910793 | MPJPE: 80.511914, x: 30.768581, y: 31.16, z: 55.246788
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 19 | h36m err: 38.72853414127927 / 38.467037476940504 | 3dpw err: 46.91079343673348 / 46.91079343673348 #####
+############# Starting Epoch 20 | LR: 0.0002 #############
+loss: 1.20864487 | accuvd29: 0.8056 | acc17: 0.8453: 100%|█| 2788/2788 [40:34<00
+Train-20 epoch | loss:1.20864487 | acc:0.8453
+############# Starting Epoch 21 | LR: 0.0002 #############
+loss: 1.21532865 | accuvd29: 0.8088 | acc17: 0.8494: 100%|█| 2788/2788 [40:32<00
+Train-21 epoch | loss:1.21532865 | acc:0.8494
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 37.560563 | MPJPE: 59.378170, x: 22.543598, y: 28.26, z: 36.568857
+Directions: 52.85 Discussion: 54.84 Eating: 58.18 Greeting: 57.17 Phoning: 61.73 Posing: 50.60 Purchases: 56.91 Sitting: 68.10 SittingDown: 79.04 Smoking: 58.05 Photo: 67.44 Waiting: 54.46 Walking: 52.72 WalkDog: 64.02 WalkTogether: 57.89 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:42<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.921954 | MPJPE: 78.649984, x: 30.237184, y: 30.64, z: 53.685897
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 21 | h36m err: 37.56056306909552 / 37.56056306909552 | 3dpw err: 46.92195421972741 / 46.91079343673348 #####
+############# Starting Epoch 22 | LR: 0.0002 #############
+loss: 1.34287934 | accuvd29: 0.8104 | acc17: 0.8530: 100%|█| 2788/2788 [40:30<00
+Train-22 epoch | loss:1.34287934 | acc:0.8530
+############# Starting Epoch 23 | LR: 0.0002 #############
+loss: 1.18424457 | accuvd29: 0.8119 | acc17: 0.8521: 100%|█| 2788/2788 [40:30<00
+Train-23 epoch | loss:1.18424457 | acc:0.8521
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 39.437917 | MPJPE: 62.741789, x: 22.919498, y: 29.79, z: 39.299531
+Directions: 55.11 Discussion: 58.08 Eating: 65.45 Greeting: 58.66 Phoning: 65.51 Posing: 53.10 Purchases: 62.99 Sitting: 72.69 SittingDown: 85.75 Smoking: 61.83 Photo: 68.83 Waiting: 56.09 Walking: 53.96 WalkDog: 65.45 WalkTogether: 59.56 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 47.117211 | MPJPE: 78.792945, x: 30.413265, y: 30.82, z: 53.768074
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 23 | h36m err: 39.43791720423628 / 37.56056306909552 | 3dpw err: 47.117211326268084 / 46.91079343673348 #####
+############# Starting Epoch 24 | LR: 0.0002 #############
+loss: 1.17858176 | accuvd29: 0.8124 | acc17: 0.8557: 100%|█| 2788/2788 [40:34<00
+Train-24 epoch | loss:1.17858176 | acc:0.8557
+############# Starting Epoch 25 | LR: 0.0002 #############
+loss: 1.17288220 | accuvd29: 0.8143 | acc17: 0.8567: 100%|█| 2788/2788 [40:31<00
+Train-25 epoch | loss:1.17288220 | acc:0.8567
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 37.580860 | MPJPE: 58.194564, x: 21.781002, y: 26.28, z: 37.132676
+Directions: 50.95 Discussion: 53.85 Eating: 54.76 Greeting: 55.20 Phoning: 58.75 Posing: 49.75 Purchases: 57.80 Sitting: 66.00 SittingDown: 77.16 Smoking: 57.85 Photo: 66.04 Waiting: 54.54 Walking: 53.39 WalkDog: 62.70 WalkTogether: 59.07 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.254855 | MPJPE: 77.703294, x: 30.010490, y: 30.43, z: 52.744543
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 25 | h36m err: 37.5808596254845 / 37.56056306909552 | 3dpw err: 46.254855156388466 / 46.254855156388466 #####
+############# Starting Epoch 26 | LR: 0.0002 #############
+loss: 1.18686832 | accuvd29: 0.8167 | acc17: 0.8605: 100%|█| 2788/2788 [40:35<00
+Train-26 epoch | loss:1.18686832 | acc:0.8605
+############# Starting Epoch 27 | LR: 0.0002 #############
+loss: 1.18380842 | accuvd29: 0.8168 | acc17: 0.8624: 100%|█| 2788/2788 [40:31<00
+Train-27 epoch | loss:1.18380842 | acc:0.8624
+100%|█████████████████████████████████████████| 270/270 [02:46<00:00,  1.62it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 38.408947 | MPJPE: 59.483353, x: 21.701544, y: 27.27, z: 38.108955
+Directions: 52.68 Discussion: 54.83 Eating: 57.90 Greeting: 57.98 Phoning: 60.24 Posing: 50.80 Purchases: 59.60 Sitting: 67.95 SittingDown: 77.28 Smoking: 59.01 Photo: 66.17 Waiting: 54.93 Walking: 52.98 WalkDog: 64.96 WalkTogether: 59.60 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.677818 | MPJPE: 79.002253, x: 31.732462, y: 30.74, z: 52.705158
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 27 | h36m err: 38.40894719471466 / 37.56056306909552 | 3dpw err: 46.67781751609648 / 46.254855156388466 #####
+############# Starting Epoch 28 | LR: 0.0002 #############
+loss: 1.16376648 | accuvd29: 0.8184 | acc17: 0.8621: 100%|█| 2788/2788 [40:31<00
+Train-28 epoch | loss:1.16376648 | acc:0.8621
+############# Starting Epoch 29 | LR: 0.0002 #############
+loss: 1.15878067 | accuvd29: 0.8190 | acc17: 0.8625: 100%|█| 2788/2788 [40:34<00
+Train-29 epoch | loss:1.15878067 | acc:0.8625
+100%|█████████████████████████████████████████| 270/270 [02:47<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 37.927218 | MPJPE: 59.332481, x: 21.863792, y: 27.77, z: 37.452335
+Directions: 53.73 Discussion: 55.32 Eating: 57.78 Greeting: 56.42 Phoning: 61.42 Posing: 51.76 Purchases: 58.46 Sitting: 65.49 SittingDown: 77.43 Smoking: 59.93 Photo: 64.29 Waiting: 54.42 Walking: 53.38 WalkDog: 62.95 WalkTogether: 59.90 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.904107 | MPJPE: 78.852726, x: 30.412018, y: 31.36, z: 53.402030
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 29 | h36m err: 37.92721805019092 / 37.56056306909552 | 3dpw err: 46.904107042092484 / 46.254855156388466 #####
+############# Starting Epoch 30 | LR: 0.0002 #############
+loss: 1.14460754 | accuvd29: 0.8219 | acc17: 0.8663: 100%|█| 2788/2788 [40:36<00
+Train-30 epoch | loss:1.14460754 | acc:0.8663
+############# Starting Epoch 31 | LR: 0.0002 #############
+loss: 1.14197351 | accuvd29: 0.8228 | acc17: 0.8671: 100%|█| 2788/2788 [40:32<00
+Train-31 epoch | loss:1.14197351 | acc:0.8671
+100%|█████████████████████████████████████████| 270/270 [02:49<00:00,  1.59it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 37.244719 | MPJPE: 59.365544, x: 22.076139, y: 27.75, z: 37.238884
+Directions: 52.59 Discussion: 54.83 Eating: 59.45 Greeting: 56.74 Phoning: 61.95 Posing: 50.21 Purchases: 55.95 Sitting: 68.39 SittingDown: 76.49 Smoking: 59.25 Photo: 65.88 Waiting: 54.83 Walking: 53.29 WalkDog: 62.40 WalkTogether: 59.32 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 47.108071 | MPJPE: 79.991128, x: 30.303628, y: 31.57, z: 54.815771
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 31 | h36m err: 37.24471930418211 / 37.24471930418211 | 3dpw err: 47.10807099656707 / 46.254855156388466 #####
+############# Starting Epoch 32 | LR: 0.0002 #############
+loss: 1.14562815 | accuvd29: 0.8216 | acc17: 0.8682: 100%|█| 2788/2788 [40:34<00
+Train-32 epoch | loss:1.14562815 | acc:0.8682
+############# Starting Epoch 33 | LR: 0.0002 #############
+loss: 1.17632634 | accuvd29: 0.8233 | acc17: 0.8695: 100%|█| 2788/2788 [40:35<00
+Train-33 epoch | loss:1.17632634 | acc:0.8695
+100%|█████████████████████████████████████████| 270/270 [02:49<00:00,  1.59it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 38.065407 | MPJPE: 60.892949, x: 21.921729, y: 31.01, z: 36.647755
+Directions: 54.98 Discussion: 55.83 Eating: 61.78 Greeting: 59.61 Phoning: 63.37 Posing: 52.15 Purchases: 56.28 Sitting: 69.76 SittingDown: 77.63 Smoking: 60.45 Photo: 68.52 Waiting: 55.55 Walking: 54.13 WalkDog: 64.15 WalkTogether: 60.81 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.242052 | MPJPE: 77.466947, x: 29.789052, y: 30.23, z: 52.527704
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 33 | h36m err: 38.06540670988562 / 37.24471930418211 | 3dpw err: 46.2420516813921 / 46.2420516813921 #####
+############# Starting Epoch 34 | LR: 0.0002 #############
+loss: 1.14605436 | accuvd29: 0.8246 | acc17: 0.8667: 100%|█| 2788/2788 [40:29<00
+Train-34 epoch | loss:1.14605436 | acc:0.8667
+############# Starting Epoch 35 | LR: 0.0002 #############
+loss: 1.13846145 | accuvd29: 0.8254 | acc17: 0.8644: 100%|█| 2788/2788 [40:33<00
+Train-35 epoch | loss:1.13846145 | acc:0.8644
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 37.535114 | MPJPE: 60.714408, x: 22.314218, y: 29.83, z: 37.166684
+Directions: 54.75 Discussion: 56.12 Eating: 58.06 Greeting: 58.88 Phoning: 62.58 Posing: 53.61 Purchases: 60.44 Sitting: 67.65 SittingDown: 79.07 Smoking: 59.57 Photo: 68.92 Waiting: 55.93 Walking: 54.58 WalkDog: 65.54 WalkTogether: 60.53 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.071255 | MPJPE: 76.357484, x: 29.690967, y: 29.93, z: 51.762662
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 35 | h36m err: 37.535113789069776 / 37.24471930418211 | 3dpw err: 46.071255046284804 / 46.071255046284804 #####
+############# Starting Epoch 36 | LR: 0.0002 #############
+loss: 1.12492072 | accuvd29: 0.8264 | acc17: 0.8695: 100%|█| 2788/2788 [40:30<00
+Train-36 epoch | loss:1.12492072 | acc:0.8695
+############# Starting Epoch 37 | LR: 0.0002 #############
+loss: 1.11547055 | accuvd29: 0.8284 | acc17: 0.8682: 100%|█| 2788/2788 [40:33<00
+Train-37 epoch | loss:1.11547055 | acc:0.8682
+100%|█████████████████████████████████████████| 270/270 [02:47<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 38.358221 | MPJPE: 62.711952, x: 22.244373, y: 31.80, z: 38.247312
+Directions: 57.75 Discussion: 58.01 Eating: 61.95 Greeting: 60.96 Phoning: 65.67 Posing: 55.77 Purchases: 59.14 Sitting: 70.35 SittingDown: 78.05 Smoking: 62.34 Photo: 70.28 Waiting: 58.25 Walking: 56.64 WalkDog: 65.01 WalkTogether: 62.56 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.873434 | MPJPE: 77.919609, x: 29.812917, y: 30.50, z: 53.047778
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 37 | h36m err: 38.3582213484847 / 37.24471930418211 | 3dpw err: 46.87343441515347 / 46.071255046284804 #####
+############# Starting Epoch 38 | LR: 0.0002 #############
+loss: 1.11728163 | accuvd29: 0.8286 | acc17: 0.8744: 100%|█| 2788/2788 [40:33<00
+Train-38 epoch | loss:1.11728163 | acc:0.8744
+############# Starting Epoch 39 | LR: 0.0002 #############
+loss: 1.11307119 | accuvd29: 0.8293 | acc17: 0.8704: 100%|█| 2788/2788 [40:33<00
+Train-39 epoch | loss:1.11307119 | acc:0.8704
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 37.457648 | MPJPE: 58.967587, x: 21.836194, y: 27.19, z: 37.542322
+Directions: 51.04 Discussion: 54.01 Eating: 58.47 Greeting: 57.47 Phoning: 61.08 Posing: 51.65 Purchases: 57.42 Sitting: 68.24 SittingDown: 78.15 Smoking: 58.30 Photo: 64.98 Waiting: 53.81 Walking: 52.19 WalkDog: 63.40 WalkTogether: 57.86 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.608088 | MPJPE: 78.788782, x: 30.089206, y: 30.59, z: 54.044487
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 39 | h36m err: 37.457647743928064 / 37.24471930418211 | 3dpw err: 46.60808782043552 / 46.071255046284804 #####
+############# Starting Epoch 40 | LR: 0.0002 #############
+loss: 2.48633159 | accuvd29: 0.8312 | acc17: 0.8708: 100%|█| 2788/2788 [40:31<00
+Train-40 epoch | loss:2.48633159 | acc:0.8708
+############# Starting Epoch 41 | LR: 0.0002 #############
+loss: 2.09062461 | accuvd29: 0.8276 | acc17: 0.8848: 100%|█| 2788/2788 [40:30<00
+Train-41 epoch | loss:2.09062461 | acc:0.8848
+100%|█████████████████████████████████████████| 270/270 [02:49<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 36.925301 | MPJPE: 60.068585, x: 20.772700, y: 29.85, z: 37.734600
+Directions: 54.97 Discussion: 56.36 Eating: 58.06 Greeting: 59.09 Phoning: 61.14 Posing: 53.20 Purchases: 59.93 Sitting: 68.27 SittingDown: 78.22 Smoking: 59.18 Photo: 68.00 Waiting: 54.95 Walking: 52.44 WalkDog: 62.93 WalkTogether: 58.03 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.652407 | MPJPE: 76.451776, x: 29.464914, y: 30.37, z: 51.542644
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 41 | h36m err: 36.92530137627548 / 36.92530137627548 | 3dpw err: 45.65240668606836 / 45.65240668606836 #####
+############# Starting Epoch 42 | LR: 0.0002 #############
+loss: 1.99967849 | accuvd29: 0.8317 | acc17: 0.8926: 100%|█| 2788/2788 [40:30<00
+Train-42 epoch | loss:1.99967849 | acc:0.8926
+############# Starting Epoch 43 | LR: 0.0002 #############
+loss: 1.98367265 | accuvd29: 0.8314 | acc17: 0.8916: 100%|█| 2788/2788 [40:35<00
+Train-43 epoch | loss:1.98367265 | acc:0.8916
+100%|█████████████████████████████████████████| 270/270 [02:47<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 37.115179 | MPJPE: 59.872595, x: 20.268310, y: 29.49, z: 37.841794
+Directions: 54.96 Discussion: 55.57 Eating: 58.08 Greeting: 60.17 Phoning: 62.06 Posing: 53.28 Purchases: 56.60 Sitting: 67.35 SittingDown: 76.02 Smoking: 58.25 Photo: 68.21 Waiting: 55.87 Walking: 52.80 WalkDog: 63.62 WalkTogether: 59.14 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.426024 | MPJPE: 76.832674, x: 29.428050, y: 30.06, z: 52.300496
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 43 | h36m err: 37.11517890025036 / 36.92530137627548 | 3dpw err: 46.42602384506528 / 45.65240668606836 #####
+############# Starting Epoch 44 | LR: 0.0002 #############
+loss: 1.96129820 | accuvd29: 0.8331 | acc17: 0.8970: 100%|█| 2788/2788 [40:33<00
+Train-44 epoch | loss:1.96129820 | acc:0.8970
+############# Starting Epoch 45 | LR: 0.0002 #############
+loss: 1.94942116 | accuvd29: 0.8339 | acc17: 0.8951: 100%|█| 2788/2788 [40:32<00
+Train-45 epoch | loss:1.94942116 | acc:0.8951
+100%|█████████████████████████████████████████| 270/270 [02:49<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 36.340741 | MPJPE: 58.334919, x: 19.904304, y: 30.43, z: 35.502601
+Directions: 52.11 Discussion: 53.47 Eating: 58.56 Greeting: 57.76 Phoning: 61.46 Posing: 51.01 Purchases: 56.26 Sitting: 67.19 SittingDown: 72.46 Smoking: 58.26 Photo: 65.94 Waiting: 52.61 Walking: 51.48 WalkDog: 62.27 WalkTogether: 55.88 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.834480 | MPJPE: 77.897598, x: 29.658639, y: 29.80, z: 53.735610
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 45 | h36m err: 36.340741104384335 / 36.340741104384335 | 3dpw err: 45.83447964817738 / 45.65240668606836 #####
+############# Starting Epoch 46 | LR: 0.0002 #############
+loss: 1.93741918 | accuvd29: 0.8348 | acc17: 0.8982: 100%|█| 2788/2788 [40:34<00
+Train-46 epoch | loss:1.93741918 | acc:0.8982
+############# Starting Epoch 47 | LR: 0.0002 #############
+loss: 1.91095859 | accuvd29: 0.8375 | acc17: 0.9028: 100%|█| 2788/2788 [40:34<00
+Train-47 epoch | loss:1.91095859 | acc:0.9028
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 36.134813 | MPJPE: 57.773911, x: 20.362505, y: 27.87, z: 36.505577
+Directions: 51.90 Discussion: 54.50 Eating: 54.82 Greeting: 57.06 Phoning: 60.52 Posing: 51.07 Purchases: 57.22 Sitting: 65.48 SittingDown: 73.88 Smoking: 57.18 Photo: 64.60 Waiting: 53.44 Walking: 50.91 WalkDog: 60.90 WalkTogether: 55.63 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.238367 | MPJPE: 77.528368, x: 29.568734, y: 30.34, z: 53.047869
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 47 | h36m err: 36.134813310874605 / 36.134813310874605 | 3dpw err: 46.23836749340836 / 45.65240668606836 #####
+############# Starting Epoch 48 | LR: 0.0002 #############
+loss: 1.91901115 | accuvd29: 0.8363 | acc17: 0.8962: 100%|█| 2788/2788 [40:34<00
+Train-48 epoch | loss:1.91901115 | acc:0.8962
+############# Starting Epoch 49 | LR: 0.0002 #############
+loss: 1.90983099 | accuvd29: 0.8371 | acc17: 0.8935: 100%|█| 2788/2788 [40:32<00
+Train-49 epoch | loss:1.90983099 | acc:0.8935
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 36.926833 | MPJPE: 60.537089, x: 20.507172, y: 30.85, z: 37.548597
+Directions: 55.15 Discussion: 55.03 Eating: 60.13 Greeting: 60.57 Phoning: 63.87 Posing: 55.63 Purchases: 57.90 Sitting: 69.30 SittingDown: 75.70 Smoking: 59.65 Photo: 68.59 Waiting: 55.77 Walking: 52.90 WalkDog: 62.47 WalkTogether: 58.74 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:42<00:00,  1.67it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 46.788080 | MPJPE: 78.107394, x: 30.259264, y: 30.27, z: 53.259705
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 49 | h36m err: 36.926832789557864 / 36.134813310874605 | 3dpw err: 46.78808008615025 / 45.65240668606836 #####
+############# Starting Epoch 50 | LR: 4e-05 #############
+loss: 1.79196383 | accuvd29: 0.8475 | acc17: 0.9073: 100%|█| 2788/2788 [40:34<00
+Train-50 epoch | loss:1.79196383 | acc:0.9073
+############# Starting Epoch 51 | LR: 4e-05 #############
+loss: 1.76212384 | accuvd29: 0.8517 | acc17: 0.9116: 100%|█| 2788/2788 [40:34<00
+Train-51 epoch | loss:1.76212384 | acc:0.9116
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.603979 | MPJPE: 57.495268, x: 19.939535, y: 30.30, z: 34.582158
+Directions: 51.77 Discussion: 53.48 Eating: 56.41 Greeting: 56.39 Phoning: 61.57 Posing: 50.54 Purchases: 55.53 Sitting: 66.69 SittingDown: 71.51 Smoking: 56.90 Photo: 65.68 Waiting: 51.90 Walking: 49.63 WalkDog: 61.18 WalkTogether: 54.12 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.446135 | MPJPE: 75.994800, x: 29.297089, y: 29.54, z: 51.832598
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 51 | h36m err: 35.6039791962549 / 35.6039791962549 | 3dpw err: 45.44613539327612 / 45.44613539327612 #####
+############# Starting Epoch 52 | LR: 4e-05 #############
+loss: 1.75252526 | accuvd29: 0.8532 | acc17: 0.9148: 100%|█| 2788/2788 [40:34<00
+Train-52 epoch | loss:1.75252526 | acc:0.9148
+############# Starting Epoch 53 | LR: 4e-05 #############
+loss: 1.74134115 | accuvd29: 0.8540 | acc17: 0.9145: 100%|█| 2788/2788 [40:34<00
+Train-53 epoch | loss:1.74134115 | acc:0.9145
+100%|█████████████████████████████████████████| 270/270 [02:47<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.469951 | MPJPE: 58.314020, x: 20.013891, y: 31.59, z: 34.493599
+Directions: 52.38 Discussion: 54.60 Eating: 57.06 Greeting: 57.12 Phoning: 63.11 Posing: 51.19 Purchases: 56.36 Sitting: 67.41 SittingDown: 71.95 Smoking: 57.93 Photo: 65.98 Waiting: 53.08 Walking: 50.42 WalkDog: 61.42 WalkTogether: 54.71 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:42<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.282759 | MPJPE: 75.578381, x: 29.132425, y: 29.40, z: 51.540744
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 53 | h36m err: 35.469950576965665 / 35.469950576965665 | 3dpw err: 45.28275936622129 / 45.28275936622129 #####
+############# Starting Epoch 54 | LR: 4e-05 #############
+loss: 1.73443914 | accuvd29: 0.8560 | acc17: 0.9172: 100%|█| 2788/2788 [40:32<00
+Train-54 epoch | loss:1.73443914 | acc:0.9172
+############# Starting Epoch 55 | LR: 4e-05 #############
+loss: 1.72499491 | accuvd29: 0.8561 | acc17: 0.9158: 100%|█| 2788/2788 [40:35<00
+Train-55 epoch | loss:1.72499491 | acc:0.9158
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.104908 | MPJPE: 56.553117, x: 19.656402, y: 29.48, z: 34.149308
+Directions: 50.24 Discussion: 52.40 Eating: 55.18 Greeting: 55.99 Phoning: 60.09 Posing: 49.96 Purchases: 54.13 Sitting: 65.87 SittingDown: 70.96 Smoking: 56.09 Photo: 64.44 Waiting: 51.81 Walking: 49.01 WalkDog: 59.86 WalkTogether: 53.44 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.551481 | MPJPE: 76.935284, x: 29.559124, y: 29.42, z: 52.932905
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 55 | h36m err: 35.10490788666912 / 35.10490788666912 | 3dpw err: 45.55148066284979 / 45.28275936622129 #####
+############# Starting Epoch 56 | LR: 4e-05 #############
+loss: 2.28588559 | accuvd29: 0.8558 | acc17: 0.9132: 100%|█| 2788/2788 [40:33<00
+Train-56 epoch | loss:2.28588559 | acc:0.9132
+############# Starting Epoch 57 | LR: 4e-05 #############
+loss: 1.71590959 | accuvd29: 0.8576 | acc17: 0.9206: 100%|█| 2788/2788 [40:23<00
+Train-57 epoch | loss:1.71590959 | acc:0.9206
+100%|█████████████████████████████████████████| 270/270 [02:49<00:00,  1.59it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.227099 | MPJPE: 57.324550, x: 19.677538, y: 30.08, z: 34.696206
+Directions: 51.08 Discussion: 53.35 Eating: 56.56 Greeting: 56.14 Phoning: 61.03 Posing: 50.58 Purchases: 55.04 Sitting: 66.96 SittingDown: 71.49 Smoking: 56.79 Photo: 65.34 Waiting: 52.32 Walking: 49.45 WalkDog: 60.26 WalkTogether: 54.04 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.217419 | MPJPE: 76.074197, x: 29.351261, y: 29.65, z: 51.810187
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 57 | h36m err: 35.22709917194136 / 35.10490788666912 | 3dpw err: 45.21741948666116 / 45.21741948666116 #####
+############# Starting Epoch 58 | LR: 4e-05 #############
+loss: 1.71299525 | accuvd29: 0.8578 | acc17: 0.9204: 100%|█| 2788/2788 [40:31<00
+Train-58 epoch | loss:1.71299525 | acc:0.9204
+############# Starting Epoch 59 | LR: 4e-05 #############
+loss: 1.70579705 | accuvd29: 0.8594 | acc17: 0.9214: 100%|█| 2788/2788 [40:32<00
+Train-59 epoch | loss:1.70579705 | acc:0.9214
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.558668 | MPJPE: 58.378288, x: 19.878279, y: 30.93, z: 35.301214
+Directions: 52.98 Discussion: 54.45 Eating: 58.24 Greeting: 57.62 Phoning: 61.97 Posing: 52.06 Purchases: 56.07 Sitting: 67.80 SittingDown: 71.98 Smoking: 57.82 Photo: 66.19 Waiting: 52.93 Walking: 50.35 WalkDog: 60.84 WalkTogether: 54.73 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.402150 | MPJPE: 76.135720, x: 29.156610, y: 29.75, z: 52.018035
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 59 | h36m err: 35.55866805206885 / 35.10490788666912 | 3dpw err: 45.402150025533345 / 45.21741948666116 #####
+############# Starting Epoch 60 | LR: 4e-05 #############
+loss: 1.72676476 | accuvd29: 0.8588 | acc17: 0.9196: 100%|█| 2788/2788 [40:31<00
+Train-60 epoch | loss:1.72676476 | acc:0.9196
+############# Starting Epoch 61 | LR: 4e-05 #############
+loss: 1.70610731 | accuvd29: 0.8584 | acc17: 0.9198: 100%|█| 2788/2788 [40:35<00
+Train-61 epoch | loss:1.70610731 | acc:0.9198
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.172188 | MPJPE: 57.332454, x: 19.731243, y: 30.49, z: 34.439904
+Directions: 51.53 Discussion: 53.77 Eating: 56.09 Greeting: 55.93 Phoning: 61.03 Posing: 50.59 Purchases: 55.58 Sitting: 66.63 SittingDown: 70.24 Smoking: 56.71 Photo: 65.28 Waiting: 51.96 Walking: 50.16 WalkDog: 60.66 WalkTogether: 54.33 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.396258 | MPJPE: 76.158629, x: 29.502845, y: 29.65, z: 51.857921
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 61 | h36m err: 35.172188287620536 / 35.10490788666912 | 3dpw err: 45.396258028309866 / 45.21741948666116 #####
+############# Starting Epoch 62 | LR: 4e-05 #############
+loss: 1.69353013 | accuvd29: 0.8596 | acc17: 0.9193: 100%|█| 2788/2788 [40:32<00
+Train-62 epoch | loss:1.69353013 | acc:0.9193
+############# Starting Epoch 63 | LR: 4e-05 #############
+loss: 1.69370850 | accuvd29: 0.8599 | acc17: 0.9178: 100%|█| 2788/2788 [40:33<00
+Train-63 epoch | loss:1.69370850 | acc:0.9178
+100%|█████████████████████████████████████████| 270/270 [02:49<00:00,  1.59it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.611118 | MPJPE: 58.958277, x: 20.066654, y: 30.75, z: 35.931314
+Directions: 53.70 Discussion: 54.61 Eating: 58.15 Greeting: 58.95 Phoning: 62.38 Posing: 53.05 Purchases: 56.71 Sitting: 68.09 SittingDown: 73.01 Smoking: 58.01 Photo: 66.52 Waiting: 54.12 Walking: 51.07 WalkDog: 61.61 WalkTogether: 56.30 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.436274 | MPJPE: 76.571067, x: 29.213174, y: 29.77, z: 52.536623
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 63 | h36m err: 35.61111831149488 / 35.10490788666912 | 3dpw err: 45.436273595284746 / 45.21741948666116 #####
+############# Starting Epoch 64 | LR: 4e-05 #############
+loss: 1.69473314 | accuvd29: 0.8599 | acc17: 0.9183: 100%|█| 2788/2788 [40:33<00
+Train-64 epoch | loss:1.69473314 | acc:0.9183
+############# Starting Epoch 65 | LR: 4e-05 #############
+loss: 1.69787395 | accuvd29: 0.8600 | acc17: 0.9215: 100%|█| 2788/2788 [40:34<00
+Train-65 epoch | loss:1.69787395 | acc:0.9215
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.103232 | MPJPE: 58.412629, x: 19.910104, y: 31.78, z: 34.512322
+Directions: 53.19 Discussion: 54.69 Eating: 57.03 Greeting: 57.56 Phoning: 62.36 Posing: 51.71 Purchases: 55.81 Sitting: 67.79 SittingDown: 71.77 Smoking: 57.72 Photo: 66.01 Waiting: 53.47 Walking: 50.75 WalkDog: 61.64 WalkTogether: 55.07 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.485367 | MPJPE: 75.839500, x: 29.144576, y: 29.61, z: 51.719599
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 65 | h36m err: 35.1032324095587 / 35.1032324095587 | 3dpw err: 45.48536680494146 / 45.21741948666116 #####
+############# Starting Epoch 66 | LR: 4e-05 #############
+loss: 1.68686256 | accuvd29: 0.8607 | acc17: 0.9172: 100%|█| 2788/2788 [40:30<00
+Train-66 epoch | loss:1.68686256 | acc:0.9172
+############# Starting Epoch 67 | LR: 4e-05 #############
+loss: 1.68043092 | accuvd29: 0.8610 | acc17: 0.9168: 100%|█| 2788/2788 [40:33<00
+Train-67 epoch | loss:1.68043092 | acc:0.9168
+100%|█████████████████████████████████████████| 270/270 [02:47<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.249335 | MPJPE: 57.627558, x: 19.713123, y: 30.57, z: 34.786664
+Directions: 52.05 Discussion: 53.92 Eating: 56.28 Greeting: 56.77 Phoning: 61.49 Posing: 51.10 Purchases: 55.23 Sitting: 67.09 SittingDown: 72.68 Smoking: 57.10 Photo: 65.22 Waiting: 52.21 Walking: 49.65 WalkDog: 60.00 WalkTogether: 54.06 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.404340 | MPJPE: 75.860363, x: 29.314611, y: 29.63, z: 51.645111
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 67 | h36m err: 35.24933518761985 / 35.1032324095587 | 3dpw err: 45.40433983617108 / 45.21741948666116 #####
+############# Starting Epoch 68 | LR: 4e-05 #############
+loss: 1.68147139 | accuvd29: 0.8615 | acc17: 0.9197: 100%|█| 2788/2788 [40:33<00
+Train-68 epoch | loss:1.68147139 | acc:0.9197
+############# Starting Epoch 69 | LR: 4e-05 #############
+loss: 1.67516531 | accuvd29: 0.8619 | acc17: 0.9251: 100%|█| 2788/2788 [40:31<00
+Train-69 epoch | loss:1.67516531 | acc:0.9251
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.370486 | MPJPE: 58.121644, x: 19.615649, y: 29.70, z: 36.098063
+Directions: 52.50 Discussion: 54.00 Eating: 56.92 Greeting: 58.17 Phoning: 61.48 Posing: 52.14 Purchases: 56.29 Sitting: 67.10 SittingDown: 72.27 Smoking: 56.95 Photo: 65.62 Waiting: 53.48 Walking: 51.05 WalkDog: 60.32 WalkTogether: 55.74 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.341999 | MPJPE: 76.335121, x: 29.427700, y: 29.62, z: 52.249141
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 69 | h36m err: 35.3704864583107 / 35.1032324095587 | 3dpw err: 45.34199880871442 / 45.21741948666116 #####
+############# Starting Epoch 70 | LR: 4e-05 #############
+loss: 1.88690614 | accuvd29: 0.8614 | acc17: 0.9201: 100%|█| 2788/2788 [40:33<00
+Train-70 epoch | loss:1.88690614 | acc:0.9201
+############# Starting Epoch 71 | LR: 4e-05 #############
+loss: 1.66912609 | accuvd29: 0.8624 | acc17: 0.9208: 100%|█| 2788/2788 [40:32<00
+Train-71 epoch | loss:1.66912609 | acc:0.9208
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.548142 | MPJPE: 58.817269, x: 19.845603, y: 31.16, z: 35.644840
+Directions: 53.52 Discussion: 54.93 Eating: 56.87 Greeting: 58.31 Phoning: 62.13 Posing: 52.81 Purchases: 57.00 Sitting: 67.89 SittingDown: 73.01 Smoking: 57.76 Photo: 66.38 Waiting: 53.76 Walking: 51.52 WalkDog: 62.13 WalkTogether: 56.25 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.324574 | MPJPE: 76.030226, x: 29.500584, y: 29.52, z: 51.852319
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 71 | h36m err: 35.54814246710226 / 35.1032324095587 | 3dpw err: 45.324573593510934 / 45.21741948666116 #####
+############# Starting Epoch 72 | LR: 4e-05 #############
+loss: 1.66330744 | accuvd29: 0.8632 | acc17: 0.9207: 100%|█| 2788/2788 [40:33<00
+Train-72 epoch | loss:1.66330744 | acc:0.9207
+############# Starting Epoch 73 | LR: 4e-05 #############
+loss: 1.66651710 | accuvd29: 0.8622 | acc17: 0.9209: 100%|█| 2788/2788 [40:31<00
+Train-73 epoch | loss:1.66651710 | acc:0.9209
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.495324 | MPJPE: 58.729745, x: 19.827047, y: 31.67, z: 35.169158
+Directions: 53.76 Discussion: 55.40 Eating: 57.94 Greeting: 58.10 Phoning: 62.76 Posing: 52.14 Purchases: 55.66 Sitting: 68.40 SittingDown: 72.32 Smoking: 57.81 Photo: 66.14 Waiting: 53.10 Walking: 50.48 WalkDog: 61.40 WalkTogether: 55.19 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.355789 | MPJPE: 75.988623, x: 29.368138, y: 29.46, z: 51.900271
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 73 | h36m err: 35.49532379448127 / 35.1032324095587 | 3dpw err: 45.35578870232521 / 45.21741948666116 #####
+############# Starting Epoch 74 | LR: 4e-05 #############
+loss: 1.66869454 | accuvd29: 0.8624 | acc17: 0.9257: 100%|█| 2788/2788 [40:31<00
+Train-74 epoch | loss:1.66869454 | acc:0.9257
+############# Starting Epoch 75 | LR: 4e-05 #############
+loss: 1.66699328 | accuvd29: 0.8629 | acc17: 0.9207: 100%|█| 2788/2788 [40:35<00
+Train-75 epoch | loss:1.66699328 | acc:0.9207
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.246547 | MPJPE: 58.694560, x: 19.850831, y: 30.96, z: 35.735543
+Directions: 53.70 Discussion: 54.50 Eating: 57.40 Greeting: 58.24 Phoning: 62.36 Posing: 52.49 Purchases: 56.71 Sitting: 68.54 SittingDown: 72.63 Smoking: 57.62 Photo: 66.83 Waiting: 53.59 Walking: 50.79 WalkDog: 60.92 WalkTogether: 55.63 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:42<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.277818 | MPJPE: 76.353161, x: 29.284521, y: 29.57, z: 52.327552
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 75 | h36m err: 35.2465468170621 / 35.1032324095587 | 3dpw err: 45.27781819656296 / 45.21741948666116 #####
+############# Starting Epoch 76 | LR: 4e-05 #############
+loss: 1.65873340 | accuvd29: 0.8637 | acc17: 0.9232: 100%|█| 2788/2788 [40:31<00
+Train-76 epoch | loss:1.65873340 | acc:0.9232
+############# Starting Epoch 77 | LR: 4e-05 #############
+loss: 1.67293697 | accuvd29: 0.8622 | acc17: 0.9204: 100%|█| 2788/2788 [40:30<00
+Train-77 epoch | loss:1.67293697 | acc:0.9204
+100%|█████████████████████████████████████████| 270/270 [02:47<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.651020 | MPJPE: 59.223952, x: 19.833043, y: 30.56, z: 36.635233
+Directions: 54.85 Discussion: 55.51 Eating: 58.03 Greeting: 59.59 Phoning: 61.62 Posing: 53.85 Purchases: 56.52 Sitting: 68.41 SittingDown: 73.16 Smoking: 57.57 Photo: 66.60 Waiting: 55.47 Walking: 51.71 WalkDog: 60.90 WalkTogether: 56.65 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.227816 | MPJPE: 76.125832, x: 29.268029, y: 29.62, z: 52.123333
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 77 | h36m err: 35.651019690638385 / 35.1032324095587 | 3dpw err: 45.227815905059614 / 45.21741948666116 #####
+############# Starting Epoch 78 | LR: 4e-05 #############
+loss: 1.65742939 | accuvd29: 0.8639 | acc17: 0.9270: 100%|█| 2788/2788 [40:32<00
+Train-78 epoch | loss:1.65742939 | acc:0.9270
+############# Starting Epoch 79 | LR: 4e-05 #############
+loss: 1.65436048 | accuvd29: 0.8646 | acc17: 0.9244: 100%|█| 2788/2788 [40:33<00
+Train-79 epoch | loss:1.65436048 | acc:0.9244
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.567653 | MPJPE: 59.319002, x: 19.980190, y: 30.80, z: 36.492437
+Directions: 54.19 Discussion: 55.39 Eating: 58.11 Greeting: 59.11 Phoning: 62.71 Posing: 53.37 Purchases: 56.29 Sitting: 69.61 SittingDown: 73.27 Smoking: 58.02 Photo: 66.86 Waiting: 54.85 Walking: 51.53 WalkDog: 61.25 WalkTogether: 56.23 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.207741 | MPJPE: 75.967433, x: 28.999266, y: 29.58, z: 52.111760
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 79 | h36m err: 35.567652596933755 / 35.1032324095587 | 3dpw err: 45.20774125825723 / 45.20774125825723 #####
+############# Starting Epoch 80 | LR: 8.000000000000001e-06 #############
+loss: 1.63118218 | accuvd29: 0.8666 | acc17: 0.9260: 100%|█| 2788/2788 [40:29<00
+Train-80 epoch | loss:1.63118218 | acc:0.9260
+############# Starting Epoch 81 | LR: 8.000000000000001e-06 #############
+loss: 1.63432914 | accuvd29: 0.8666 | acc17: 0.9246: 100%|█| 2788/2788 [40:33<00
+Train-81 epoch | loss:1.63432914 | acc:0.9246
+100%|█████████████████████████████████████████| 270/270 [02:49<00:00,  1.59it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.123723 | MPJPE: 57.939134, x: 19.651074, y: 30.55, z: 35.194751
+Directions: 52.90 Discussion: 54.25 Eating: 56.95 Greeting: 57.56 Phoning: 61.21 Posing: 51.77 Purchases: 55.47 Sitting: 67.90 SittingDown: 72.26 Smoking: 56.64 Photo: 65.27 Waiting: 53.01 Walking: 50.03 WalkDog: 60.28 WalkTogether: 54.57 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.145555 | MPJPE: 76.075480, x: 29.223738, y: 29.53, z: 52.089681
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 81 | h36m err: 35.123722943159855 / 35.1032324095587 | 3dpw err: 45.14555507118998 / 45.14555507118998 #####
+############# Starting Epoch 82 | LR: 8.000000000000001e-06 #############
+loss: 1.63176213 | accuvd29: 0.8668 | acc17: 0.9262: 100%|█| 2788/2788 [40:31<00
+Train-82 epoch | loss:1.63176213 | acc:0.9262
+############# Starting Epoch 83 | LR: 8.000000000000001e-06 #############
+loss: 1.61858127 | accuvd29: 0.8673 | acc17: 0.9232: 100%|█| 2788/2788 [40:32<00
+Train-83 epoch | loss:1.61858127 | acc:0.9232
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.296189 | MPJPE: 58.624456, x: 19.695966, y: 30.86, z: 35.806232
+Directions: 53.58 Discussion: 54.95 Eating: 57.48 Greeting: 58.22 Phoning: 61.81 Posing: 52.47 Purchases: 56.45 Sitting: 68.42 SittingDown: 73.97 Smoking: 57.21 Photo: 66.10 Waiting: 53.60 Walking: 50.65 WalkDog: 60.67 WalkTogether: 55.19 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.161271 | MPJPE: 76.106488, x: 29.228290, y: 29.56, z: 52.109381
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 83 | h36m err: 35.29618897625743 / 35.1032324095587 | 3dpw err: 45.161271117330784 / 45.14555507118998 #####
+############# Starting Epoch 84 | LR: 8.000000000000001e-06 #############
+loss: 1.62454769 | accuvd29: 0.8677 | acc17: 0.9283: 100%|█| 2788/2788 [40:34<00
+Train-84 epoch | loss:1.62454769 | acc:0.9283
+############# Starting Epoch 85 | LR: 8.000000000000001e-06 #############
+loss: 1.63190733 | accuvd29: 0.8667 | acc17: 0.9237: 100%|█| 2788/2788 [40:31<00
+Train-85 epoch | loss:1.63190733 | acc:0.9237
+100%|█████████████████████████████████████████| 270/270 [02:49<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.329056 | MPJPE: 58.992973, x: 19.798630, y: 31.34, z: 35.827920
+Directions: 54.40 Discussion: 55.47 Eating: 57.59 Greeting: 58.86 Phoning: 62.33 Posing: 53.15 Purchases: 56.82 Sitting: 68.60 SittingDown: 73.19 Smoking: 57.52 Photo: 66.38 Waiting: 54.19 Walking: 50.99 WalkDog: 61.06 WalkTogether: 55.62 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.155221 | MPJPE: 76.093152, x: 29.304941, y: 29.62, z: 51.928981
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 85 | h36m err: 35.32905596337975 / 35.1032324095587 | 3dpw err: 45.155220557241734 / 45.14555507118998 #####
+############# Starting Epoch 86 | LR: 8.000000000000001e-06 #############
+loss: 1.61997824 | accuvd29: 0.8686 | acc17: 0.9260: 100%|█| 2788/2788 [40:36<00
+Train-86 epoch | loss:1.61997824 | acc:0.9260
+############# Starting Epoch 87 | LR: 8.000000000000001e-06 #############
+loss: 1.60860672 | accuvd29: 0.8689 | acc17: 0.9285: 100%|█| 2788/2788 [40:32<00
+Train-87 epoch | loss:1.60860672 | acc:0.9285
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.119711 | MPJPE: 58.005768, x: 19.715563, y: 30.70, z: 35.106020
+Directions: 53.00 Discussion: 54.40 Eating: 56.74 Greeting: 57.54 Phoning: 61.51 Posing: 51.71 Purchases: 55.66 Sitting: 67.80 SittingDown: 72.57 Smoking: 56.70 Photo: 65.44 Waiting: 52.98 Walking: 50.11 WalkDog: 60.20 WalkTogether: 54.74 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:42<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.092856 | MPJPE: 75.947983, x: 29.074196, y: 29.50, z: 52.046995
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 87 | h36m err: 35.119711169824946 / 35.1032324095587 | 3dpw err: 45.09285620007858 / 45.09285620007858 #####
+############# Starting Epoch 88 | LR: 8.000000000000001e-06 #############
+loss: 1.63385009 | accuvd29: 0.8678 | acc17: 0.9243: 100%|█| 2788/2788 [40:29<00
+Train-88 epoch | loss:1.63385009 | acc:0.9243
+############# Starting Epoch 89 | LR: 8.000000000000001e-06 #############
+loss: 1.61172928 | accuvd29: 0.8685 | acc17: 0.9298: 100%|█| 2788/2788 [40:32<00
+Train-89 epoch | loss:1.61172928 | acc:0.9298
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.137129 | MPJPE: 58.199161, x: 19.707743, y: 30.50, z: 35.549936
+Directions: 53.23 Discussion: 54.38 Eating: 57.24 Greeting: 57.84 Phoning: 61.42 Posing: 52.09 Purchases: 56.22 Sitting: 67.88 SittingDown: 72.81 Smoking: 56.80 Photo: 65.83 Waiting: 53.02 Walking: 50.34 WalkDog: 60.55 WalkTogether: 54.91 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.221436 | MPJPE: 76.051844, x: 29.247278, y: 29.65, z: 51.923685
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 89 | h36m err: 35.13712862938673 / 35.1032324095587 | 3dpw err: 45.22143633155493 / 45.09285620007858 #####
+############# Starting Epoch 90 | LR: 8.000000000000001e-06 #############
+loss: 1.62735355 | accuvd29: 0.8671 | acc17: 0.9246: 100%|█| 2788/2788 [40:27<00
+Train-90 epoch | loss:1.62735355 | acc:0.9246
+############# Starting Epoch 91 | LR: 8.000000000000001e-06 #############
+loss: 1.60825214 | accuvd29: 0.8688 | acc17: 0.9261: 100%|█| 2788/2788 [40:31<00
+Train-91 epoch | loss:1.60825214 | acc:0.9261
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.446521 | MPJPE: 59.151304, x: 19.717229, y: 31.29, z: 36.120059
+Directions: 54.60 Discussion: 55.50 Eating: 58.04 Greeting: 59.07 Phoning: 62.33 Posing: 53.48 Purchases: 56.84 Sitting: 68.70 SittingDown: 73.18 Smoking: 57.73 Photo: 66.54 Waiting: 54.27 Walking: 51.26 WalkDog: 61.04 WalkTogether: 56.08 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.316342 | MPJPE: 76.257555, x: 29.339041, y: 29.64, z: 52.162345
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 91 | h36m err: 35.44652074031522 / 35.1032324095587 | 3dpw err: 45.31634183586016 / 45.09285620007858 #####
+############# Starting Epoch 92 | LR: 8.000000000000001e-06 #############
+loss: 1.61828405 | accuvd29: 0.8681 | acc17: 0.9295: 100%|█| 2788/2788 [40:31<00
+Train-92 epoch | loss:1.61828405 | acc:0.9295
+############# Starting Epoch 93 | LR: 8.000000000000001e-06 #############
+loss: 1.61788146 | accuvd29: 0.8678 | acc17: 0.9277: 100%|█| 2788/2788 [40:32<00
+Train-93 epoch | loss:1.61788146 | acc:0.9277
+100%|█████████████████████████████████████████| 270/270 [02:47<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.207948 | MPJPE: 58.497435, x: 19.687783, y: 30.87, z: 35.649469
+Directions: 53.53 Discussion: 54.92 Eating: 57.11 Greeting: 58.16 Phoning: 61.82 Posing: 52.51 Purchases: 56.26 Sitting: 68.08 SittingDown: 72.75 Smoking: 57.17 Photo: 65.94 Waiting: 53.58 Walking: 50.70 WalkDog: 60.89 WalkTogether: 55.29 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:42<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.178614 | MPJPE: 75.942024, x: 29.210114, y: 29.55, z: 51.894521
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 93 | h36m err: 35.20794829123067 / 35.1032324095587 | 3dpw err: 45.17861355468314 / 45.09285620007858 #####
+############# Starting Epoch 94 | LR: 8.000000000000001e-06 #############
+loss: 1.61036769 | accuvd29: 0.8689 | acc17: 0.9262: 100%|█| 2788/2788 [40:33<00
+Train-94 epoch | loss:1.61036769 | acc:0.9262
+############# Starting Epoch 95 | LR: 8.000000000000001e-06 #############
+loss: 1.61413365 | accuvd29: 0.8683 | acc17: 0.9287: 100%|█| 2788/2788 [40:30<00
+Train-95 epoch | loss:1.61413365 | acc:0.9287
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.137501 | MPJPE: 58.031359, x: 19.512375, y: 30.67, z: 35.356593
+Directions: 53.00 Discussion: 54.32 Eating: 56.79 Greeting: 57.50 Phoning: 61.27 Posing: 51.77 Purchases: 55.56 Sitting: 67.84 SittingDown: 72.78 Smoking: 56.68 Photo: 65.69 Waiting: 53.09 Walking: 50.19 WalkDog: 60.57 WalkTogether: 54.66 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:43<00:00,  1.66it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.258974 | MPJPE: 75.973322, x: 29.226198, y: 29.50, z: 52.004940
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 95 | h36m err: 35.13750068839199 / 35.1032324095587 | 3dpw err: 45.25897423277308 / 45.09285620007858 #####
+############# Starting Epoch 96 | LR: 8.000000000000001e-06 #############
+loss: 1.60852757 | accuvd29: 0.8690 | acc17: 0.9294: 100%|█| 2788/2788 [40:35<00
+Train-96 epoch | loss:1.60852757 | acc:0.9294
+############# Starting Epoch 97 | LR: 8.000000000000001e-06 #############
+loss: 1.60823717 | accuvd29: 0.8696 | acc17: 0.9254: 100%|█| 2788/2788 [40:15<00
+Train-97 epoch | loss:1.60823717 | acc:0.9254
+100%|█████████████████████████████████████████| 270/270 [02:50<00:00,  1.59it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.112403 | MPJPE: 58.402465, x: 19.669120, y: 30.71, z: 35.686626
+Directions: 53.61 Discussion: 54.88 Eating: 57.00 Greeting: 58.17 Phoning: 61.51 Posing: 52.28 Purchases: 55.89 Sitting: 68.04 SittingDown: 73.04 Smoking: 56.91 Photo: 65.86 Waiting: 53.62 Walking: 50.64 WalkDog: 60.71 WalkTogether: 55.18 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:47<00:00,  1.63it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.145895 | MPJPE: 75.778855, x: 29.110482, y: 29.50, z: 51.851573
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 97 | h36m err: 35.11240332236286 / 35.1032324095587 | 3dpw err: 45.14589495732063 / 45.09285620007858 #####
+############# Starting Epoch 98 | LR: 8.000000000000001e-06 #############
+loss: 1.60846726 | accuvd29: 0.8687 | acc17: 0.9301: 100%|█| 2788/2788 [41:03<00
+Train-98 epoch | loss:1.60846726 | acc:0.9301
+############# Starting Epoch 99 | LR: 8.000000000000001e-06 #############
+loss: 1.60862810 | accuvd29: 0.8686 | acc17: 0.9268: 100%|█| 2788/2788 [40:51<00
+Train-99 epoch | loss:1.60862810 | acc:0.9268
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.61it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.165594 | MPJPE: 58.424778, x: 19.621736, y: 30.92, z: 35.538198
+Directions: 53.53 Discussion: 54.62 Eating: 56.97 Greeting: 58.20 Phoning: 61.59 Posing: 52.55 Purchases: 56.51 Sitting: 68.10 SittingDown: 72.72 Smoking: 57.04 Photo: 65.86 Waiting: 53.74 Walking: 50.67 WalkDog: 60.69 WalkTogether: 55.33 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:44<00:00,  1.65it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.249040 | MPJPE: 76.113772, x: 29.303651, y: 29.52, z: 52.098339
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 99 | h36m err: 35.165594046471355 / 35.1032324095587 | 3dpw err: 45.249039570529895 / 45.09285620007858 #####
+############# Starting Epoch 100 | LR: 8.000000000000001e-06 #############
+loss: 1.61556773 | accuvd29: 0.8685 | acc17: 0.9271: 100%|█| 2788/2788 [40:52<00
+Train-100 epoch | loss:1.61556773 | acc:0.9271
+############# Starting Epoch 101 | LR: 8.000000000000001e-06 #############
+loss: 1.60663884 | accuvd29: 0.8692 | acc17: 0.9276: 100%|█| 2788/2788 [40:22<00
+Train-101 epoch | loss:1.60663884 | acc:0.9276
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.149218 | MPJPE: 58.250616, x: 19.450039, y: 30.67, z: 35.658688
+Directions: 53.22 Discussion: 54.71 Eating: 56.61 Greeting: 57.90 Phoning: 61.65 Posing: 52.13 Purchases: 55.93 Sitting: 68.06 SittingDown: 73.00 Smoking: 56.82 Photo: 65.76 Waiting: 53.34 Walking: 50.41 WalkDog: 60.46 WalkTogether: 55.02 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.337080 | MPJPE: 75.956837, x: 29.259446, y: 29.59, z: 51.869805
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 101 | h36m err: 35.14921809923836 / 35.1032324095587 | 3dpw err: 45.33707998558022 / 45.09285620007858 #####
+############# Starting Epoch 102 | LR: 8.000000000000001e-06 #############
+loss: 1.61350604 | accuvd29: 0.8684 | acc17: 0.9238: 100%|█| 2788/2788 [41:26<00
+Train-102 epoch | loss:1.61350604 | acc:0.9238
+############# Starting Epoch 103 | LR: 8.000000000000001e-06 #############
+loss: 1.60182702 | accuvd29: 0.8696 | acc17: 0.9290: 100%|█| 2788/2788 [40:39<00
+Train-103 epoch | loss:1.60182702 | acc:0.9290
+100%|█████████████████████████████████████████| 270/270 [02:50<00:00,  1.59it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.173319 | MPJPE: 58.331504, x: 19.572390, y: 30.89, z: 35.475500
+Directions: 53.50 Discussion: 54.90 Eating: 56.74 Greeting: 57.89 Phoning: 61.59 Posing: 52.28 Purchases: 55.98 Sitting: 67.93 SittingDown: 72.76 Smoking: 56.86 Photo: 65.99 Waiting: 53.37 Walking: 50.43 WalkDog: 60.97 WalkTogether: 55.00 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.231125 | MPJPE: 76.063011, x: 29.291001, y: 29.46, z: 52.115553
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 103 | h36m err: 35.17331913194953 / 35.1032324095587 | 3dpw err: 45.23112545147293 / 45.09285620007858 #####
+############# Starting Epoch 104 | LR: 8.000000000000001e-06 #############
+loss: 1.60787290 | accuvd29: 0.8687 | acc17: 0.9264: 100%|█| 2788/2788 [40:58<00
+Train-104 epoch | loss:1.60787290 | acc:0.9264
+############# Starting Epoch 105 | LR: 8.000000000000001e-06 #############
+loss: 1.62749229 | accuvd29: 0.8686 | acc17: 0.9259: 100%|█| 2788/2788 [40:53<00
+Train-105 epoch | loss:1.62749229 | acc:0.9259
+100%|█████████████████████████████████████████| 270/270 [02:48<00:00,  1.60it/s]
+Evaluation start...
+XYZ_14 Protocol 2 error (MPJPE) >> PA-MPJPE: 35.209346 | MPJPE: 58.519389, x: 19.672534, y: 31.20, z: 35.393893
+Directions: 53.44 Discussion: 54.80 Eating: 57.19 Greeting: 57.85 Phoning: 61.95 Posing: 52.24 Purchases: 56.18 Sitting: 68.57 SittingDown: 73.40 Smoking: 57.31 Photo: 65.95 Waiting: 53.30 Walking: 50.61 WalkDog: 60.89 WalkTogether: 55.16 
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+100%|█████████████████████████████████████████| 370/370 [03:45<00:00,  1.64it/s]
+Evaluation start...
+XYZ_14 PA-MPJPE: 45.243451 | MPJPE: 76.019427, x: 29.203384, y: 29.48, z: 52.080369
+
+Test result is saved at ./exp/mix2_smpl_cam/poolattnhr_cam_w_pw3d.yaml-train_res34/test_3d_kpt.json
+##### Epoch 105 | h36m err: 35.20934598821098 / 35.1032324095587 | 3dpw err: 45.24345126834509 / 45.09285620007858 #####
+

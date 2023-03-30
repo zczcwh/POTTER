@@ -1,0 +1,9 @@
+LICENSE
+README.md
+setup.py
+hybrik.egg-info/PKG-INFO
+hybrik.egg-info/SOURCES.txt
+hybrik.egg-info/dependency_links.txt
+hybrik.egg-info/not-zip-safe
+hybrik.egg-info/requires.txt
+hybrik.egg-info/top_level.txt
