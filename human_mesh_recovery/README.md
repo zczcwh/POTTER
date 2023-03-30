@@ -33,6 +33,12 @@ Please follow download instructions from [HybrIK](https://github.com/Jeff-sjtu/H
 ## Demo
 First make sure you download the pretrained model and place it in the `${ROOT}/eval` directory, i.e., `./eval/potter_demo.pth` or `./eval/feater_demo.pth`.
 
+Also, make sure you have run this command in the installation instruction.
+
+``` bash
+python setup.py develop 
+```
+
 * Visualize POTTER on **images**:
 
 ``` bash
