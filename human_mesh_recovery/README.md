@@ -24,7 +24,11 @@ Please follow the installation instructions from [HybrIK](https://github.com/Jef
 
 ## Download models
 
-Please follow download instructions from [HybrIK](https://github.com/Jeff-sjtu/HybrIK) to get the required files since our code is build based on HybrIK. 
+Please follow download instructions from [HybrIK](https://github.com/Jeff-sjtu/HybrIK) to get the required files since our code is build based on HybrIK.
+
+* Download the SMPL model `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` from [here](https://smpl.is.tue.mpg.de/) at `common/utils/smplpytorch/smplpytorch/native/models`.
+* Download our POTTER demo model from [ [Google Drive](https://drive.google.com/file/d/1tLpMCbC6-M3Yxxsn5OoHbo8JuJLO5opZ/view?usp=sharing)].
+* Download our FeatER demo model from [ [Google Drive](https://drive.google.com/file/d/1uAyla25E15BLezs1wpHk2GprszF5q-5e/view?usp=sharing)].
 
 ## Demo
 First make sure you download the pretrained model and place it in the `${ROOT}/eval` directory, i.e., `./eval/potter_demo.pth` or `./eval/feater_demo.pth`.
