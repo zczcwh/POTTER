@@ -66,7 +66,7 @@ class PoolAttnHRCam(nn.Module):
                                                drop_path_rate=self.drop_path_rate,
                                                use_layer_scale=True, layer_scale_init_value=1e-5,)
 
-        if self.pretrained is not None:
+        if self.pretrained != "None":
             pt_checkpoint = torch.load(self.pretrained, map_location=lambda storage, loc: storage)
             # pt_checkpoint = pt_checkpoint["model"]
             # model.load_state_dict(pt_checkpoint, False)

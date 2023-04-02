@@ -47,6 +47,7 @@ class HeatERCam(nn.Module):
         self.depth_dim = kwargs['EXTRA']['DEPTH_DIM']
         self.height_dim = kwargs['HEATMAP_SIZE'][0]
         self.width_dim = kwargs['HEATMAP_SIZE'][1]
+        self.pretrained = kwargs['EXTRA']['PRETRAINED']
         self.smpl_dtype = torch.float32
 
 
@@ -54,7 +55,11 @@ class HeatERCam(nn.Module):
         ###  Due to the limited time and resources, I didn't retrain the entire network
         ###  with the correct names of each module shows in the paper
         ### Sorry for the inconvenience
-        hmvit_pretrained = "./model_files/hmvit_256_best.pth"
+        # hmvit_pretrained = "./model_files/hmvit_256_best.pth"
+        if self.pretrained != "None":
+            hmvit_pretrained = self.pretrained
+        else:
+            hmvit_pretrained = None
         self.hmvit_back = get_pose_net(num_joints=self.num_joints, img_H=self.img_H, img_W=self.img_W,
                                        checkpoint=hmvit_pretrained)
 
