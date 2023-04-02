@@ -21,7 +21,7 @@ DATASET:
 MODEL:
   TYPE: 'HeatERCam'
   PRETRAINED: ''
-  TRY_LOAD: './model_files/heater_pretrain.pth'
+  TRY_LOAD: ''
   FOCAL_LENGTH: 1000
   IMAGE_SIZE:
   - 256
@@ -42,6 +42,8 @@ MODEL:
     AUGMENT: 'none'
     PRESET: 'simple_smpl_3d_cam'
     DEPTH_DIM: 64
+    PRETRAINED: "None"
+#    PRETRAINED: "./model_files/hmvit_256_best.pth"
 #    PRETRAINED: "./model_files/heater_pretrain.pth"
   POST:
     NORM_TYPE: 'softmax'

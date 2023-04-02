@@ -21,7 +21,7 @@ DATASET:
 MODEL:
   TYPE: 'PoolAttnHRCam'
   PRETRAINED: ''
-  TRY_LOAD: './eval/potter_demo.pth'
+  TRY_LOAD: ''
   FOCAL_LENGTH: 1000
   IMAGE_SIZE:
   - 256
@@ -58,7 +58,8 @@ MODEL:
       - 4
     DROP_RATE: 0.1
     DROP_PATH_RATE: 0.1
-    PRETRAINED: "./model_files/poolattnhr_coco.pth"
+#    PRETRAINED: "./model_files/poolattnhr_pre.pth"
+    PRETRAINED: "None"
 
   POST:
     NORM_TYPE: 'softmax'
