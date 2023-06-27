@@ -72,10 +72,27 @@ Please follow download instructions from [HybrIK](https://github.com/Jeff-sjtu/H
 
 
 
-## Train from scratch
-Code will be released soon.
+## Training
+Please download the pretrained weights first and place it in the `${ROOT}/model_files` directory, :
+* Download our POTTER pretrained weights from [ [Google Drive](https://drive.google.com/file/d/1Nr4uFGryG7v6Tl9sqz3v9u7_w1p6lwW1/view?usp=sharing)].
+* Download our FeatER pretrained weights from [ [Google Drive](https://drive.google.com/file/d/1ULMN1U0GHjcQ5nUQpQ1SAhLxc5P1EULB/view?usp=sharing)].
 
-
+To train POTTER:
+``` bash
+./scripts/train_smpl_cam.sh train_potter ./configs/potter_cam_w_pw3d.yaml
+```
+To train FeatER:
+``` bash
+./scripts/train_smpl_cam.sh train_feater ./configs/feater_cam_w_pw3d.yaml
+```
+To evaluate:
+``` bash
+./scripts/validate_smpl_cam.sh ./configs/potter_cam_w_pw3d.yaml [ckp_path]
+```
+or
+``` bash
+./scripts/validate_smpl_cam.sh ./configs/feater_cam_w_pw3d.yaml [ckp_path]
+```
 
 
 ## Citing
