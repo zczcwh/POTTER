@@ -42,7 +42,7 @@ MODEL:
     AUGMENT: 'none'
     PRESET: 'simple_smpl_3d_cam'
     DEPTH_DIM: 64
-#    PRETRAINED: "./model_files/feater_pretrain.pth"
+    PRETRAINED: "None"
   POST:
     NORM_TYPE: 'softmax'
   BBOX_3D_SHAPE:
