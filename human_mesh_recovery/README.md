@@ -105,7 +105,7 @@ If our code helps your research, please consider citing the following paper:
         year={2023}
     }
     
-        @inproceedings{zheng2023feater,
+    @inproceedings{zheng2023feater,
         title={FeatER: An Efficient Network for Human Reconstruction via Feature Map-Based TransformER},
         author={Zheng, Ce and Mendieta, Matias and Yang, Taojiannan and Qi, Guo-Jun and Chen, Chen},
         booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
