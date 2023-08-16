@@ -5,6 +5,12 @@ The project is an official implementation of our paper [POTTER: Pooling Attentio
 Please check `image_classification` folder for Image Classification Part (Section 4.1 in our paper) and `human_mesh_recovery` folder for Human Mesh Recovery Part.  
 
 ## Experiments 
+![POTTRT](./img/w1.png)
+![POTTRT](./img/w2.png)
+
+## Visualizations
+
+![POTTRT](./img/w3.png)
 
 
 ## Citing
