@@ -1,7 +1,10 @@
-# Human Mesh Recovery (HMR) part.
+# Human Mesh Recovery (HMR) part for our two papers.
 
+"FeatER: An Efficient Network for Human Reconstruction via Feature Map-Based TransformER", CVPR 2023
 
+"POTTER: Pooling Attention Transformer for Efficient Human Mesh Recovery", CVPR 2023
 
+Please check the instruction for running FeatER or POTTER.
 
 <div align="center">
 <img src="assets/potter.gif" height="160"> 
@@ -10,21 +13,17 @@
 
 ## News :triangular_flag_on_post:
 
-[2023/03/29] The demo code is released!
+[2023/03/29] The demo code (both FeatER and POTTER) are released!
 
-
-## TODO
-- Provide pretrained model 
-- Provide training and testing code
 
 ## Installation instructions
 
-Please follow the installation instructions from [HybrIK](https://github.com/Jeff-sjtu/HybrIK) since our code is build based on HybrIK. 
+Please follow the installation instructions from [HybrIK](https://github.com/Jeff-sjtu/HybrIK) since our code is built based on HybrIK. 
 
 
 ## Download models
 
-Please follow download instructions from [HybrIK](https://github.com/Jeff-sjtu/HybrIK) to get the required files since our code is build based on HybrIK.
+Please follow the download instructions from [HybrIK](https://github.com/Jeff-sjtu/HybrIK) to get the required files since our code is built based on HybrIK.
 
 * Download the SMPL model `basicModel_neutral_lbs_10_207_0_v1.0.0.pkl` from [here](https://smpl.is.tue.mpg.de/) at `common/utils/smplpytorch/smplpytorch/native/models`.
 * Download our POTTER demo model from [ [Google Drive](https://drive.google.com/file/d/1tLpMCbC6-M3Yxxsn5OoHbo8JuJLO5opZ/view?usp=sharing)].
@@ -59,7 +58,7 @@ Similarly
 python scripts/demo_image_feater.py --img-dir examples/coco --out-dir examples/res_coco
 ```
 
-* Visualize FeatER on **videos** (frame by frame reconstruction) and save results:
+* Visualize FeatER on **videos** (frame-by-frame reconstruction) and save results:
 
 ``` bash
 python scripts/demo_video_feater.py --video-name examples/d1.mp4 --out-dir examples/res_d1
@@ -68,7 +67,7 @@ python scripts/demo_video_feater.py --video-name examples/d1.mp4 --out-dir examp
 
 
 ## Fetch data
-Please follow download instructions from [HybrIK](https://github.com/Jeff-sjtu/HybrIK) to get the dataset since our code is build based on HybrIK. 
+Please follow the download instructions from [HybrIK](https://github.com/Jeff-sjtu/HybrIK) to get the dataset since our code is built based on HybrIK. 
 
 
 
