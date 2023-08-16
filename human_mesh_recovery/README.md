@@ -1,8 +1,8 @@
 # Human Mesh Recovery (HMR) part for our two papers.
 
-"FeatER: An Efficient Network for Human Reconstruction via Feature Map-Based TransformER", CVPR 2023
+**"FeatER: An Efficient Network for Human Reconstruction via Feature Map-Based TransformER", CVPR 2023**
 
-"POTTER: Pooling Attention Transformer for Efficient Human Mesh Recovery", CVPR 2023
+**"POTTER: Pooling Attention Transformer for Efficient Human Mesh Recovery", CVPR 2023**
 
 Please check the instruction for running FeatER or POTTER.
 
