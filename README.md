@@ -11,8 +11,9 @@ Please check `image_classification` folder for Image Classification Part (Sectio
 </p>
 
 ## Visualizations
-
-![POTTRT](./img/w3.png)
+<p align="center">
+  <img src="./img/w3.png">
+</p>
 
 
 ## Citing
